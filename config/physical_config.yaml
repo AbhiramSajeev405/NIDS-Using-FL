@@ -1,0 +1,21 @@
+experiment_name: exp_20260506_112342
+model_type: cnn
+architecture: flat
+attacker_scenario: none
+federated:
+  strategy: fedavg
+  num_rounds_global: 15
+  num_rounds_local: 1
+  num_clients: 9
+  clients_per_round: 9
+training:
+  learning_rate: 0.001
+  batch_size: 256
+  input_dim: 78
+  num_classes: 2
+defenses:
+  differential_privacy: false
+  dp_epsilon: 1.0
+  dp_delta: 1.0e-05
+  gradient_clipping: false
+  clip_norm: 1.0

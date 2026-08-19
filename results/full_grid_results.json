@@ -1,0 +1,152 @@
+[
+  {
+    "model": "mlp",
+    "strategy": "fedavg",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "mlp",
+    "strategy": "fedprox",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "mlp",
+    "strategy": "fedmedian",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "mlp",
+    "strategy": "krum",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "mlp",
+    "strategy": "trimmed_mean",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "mlp",
+    "strategy": "fednova",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "fedavg",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "fedprox",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "fedmedian",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "krum",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "trimmed_mean",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "cnn",
+    "strategy": "fednova",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "fedavg",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "fedprox",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "fedmedian",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "krum",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "trimmed_mean",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "lstm",
+    "strategy": "fednova",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "fedavg",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "fedprox",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "fedmedian",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "krum",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "trimmed_mean",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "resnet",
+    "strategy": "fednova",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "fedavg",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "fedprox",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "fedmedian",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "krum",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "trimmed_mean",
+    "status": "TIMEOUT"
+  },
+  {
+    "model": "autoencoder",
+    "strategy": "fednova",
+    "status": "TIMEOUT"
+  }
+]

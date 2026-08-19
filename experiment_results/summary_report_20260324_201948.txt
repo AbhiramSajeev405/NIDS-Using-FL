@@ -1,0 +1,53 @@
+======================================================================
+EXPERIMENT SUMMARY REPORT
+======================================================================
+
+Total experiments: 2
+Average accuracy: 88.54%
+Average detection rate: 99.90%
+Average F1: 0.9387
+Average duration: 1.5s
+
+======================================================================
+TOP 5 CONFIGURATIONS BY ACCURACY
+======================================================================
+
+2. mlp + fedmedian
+   Accuracy: 88.61%
+   Detection: 99.90%
+   F1: 0.9391
+   Rounds: 3, Clients: 2
+
+1. mlp + fedavg
+   Accuracy: 88.47%
+   Detection: 99.90%
+   F1: 0.9384
+   Rounds: 3, Clients: 2
+
+======================================================================
+BEST CONFIGURATION PER MODEL
+======================================================================
+
+MLP:
+  Best strategy: fedmedian
+  Accuracy: 88.61%
+  Detection: 99.90%
+  Config: 3 rounds, 2 clients
+
+======================================================================
+BEST CONFIGURATION PER STRATEGY
+======================================================================
+
+FEDAVG:
+  Best model: mlp
+  Accuracy: 88.47%
+  Detection: 99.90%
+  Config: 3 rounds, 2 clients
+
+FEDMEDIAN:
+  Best model: mlp
+  Accuracy: 88.61%
+  Detection: 99.90%
+  Config: 3 rounds, 2 clients
+
+======================================================================

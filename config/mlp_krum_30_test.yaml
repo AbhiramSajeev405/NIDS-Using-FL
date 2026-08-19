@@ -1,0 +1,21 @@
+experiment:
+  name: mlp_krum_30_test
+  seed: 42
+federated:
+  architecture: flat
+  krum_num_malicious: 1
+  num_clients: 9
+  num_rounds_global: 30
+  strategy: krum
+input_dim: 78
+model_type: mlp
+network:
+  global_server:
+    ip: 127.0.0.1
+    port: 8080
+num_classes: 2
+training:
+  batch_size: 256
+  epochs: 3
+  lr: 0.001
+  optimizer: adam

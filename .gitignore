@@ -1,0 +1,91 @@
+# ============================================
+# Development / debugging documentation
+# ============================================
+BUG_FIX_SUMMARY.txt
+BUG_FIXES_APPLIED.md
+BUG_REPORT.txt
+CHANGES_SUMMARY.txt
+COMPLETE_5_LAPTOP_MODIFICATIONS.txt
+DEPENDENCY_STATUS.txt
+EXPERIMENTS_COMPLETE_SUMMARY.txt
+FINAL_SUMMARY.txt
+FINAL_VERIFICATION.txt
+GPU_TEST_RESULTS.txt
+SESSION_SUMMARY.txt
+NEW_SETUP_SCRIPTS_SUMMARY.txt
+VERIFICATION_CHECKLIST.txt
+handoff_prompt.txt
+abc.txt
+
+# Temporary/debug scripts
+direct_fix_test.py
+fix_bugs.py
+quick_test_fixes.py
+minimal_gpu_test.py
+test_fixes_gpu.py
+
+# Temporary/runtime output
+mlp_fedavg_run.log
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Embedded Python runtime
+deployment_tools/python_embedded/
+deployment_tools/python-*-embed-amd64.zip
+
+# Large local datasets
+data/
+
+# Logs
+logs/
+*.log
+
+# Secrets/environment
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# AI/editor tooling
+.claude/
+
+# Runtime dashboard state
+dashboard/live_state.json
+
+# Development/session notes
+docs/SESSION_SUMMARY*.md
+
+# Temporary/debug result files
+results/code_verification.json
+results/direct_fix_test.json
+results/quick_batch_*.json
+results/quick_test_results.txt
+
+# Runtime dashboard state
+dashboard/live_state.json
+
+# Development/session notes
+docs/SESSION_SUMMARY*.md
+
+# Temporary/debug result files
+results/code_verification.json
+results/direct_fix_test.json
+results/quick_batch_*.json
+results/quick_test_results.txt
+
+models/test_results_*.json

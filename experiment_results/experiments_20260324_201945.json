@@ -1,0 +1,76 @@
+[
+  {
+    "config": {
+      "model": "mlp",
+      "strategy": "fedavg",
+      "num_rounds": 3,
+      "num_clients": 2
+    },
+    "start_time": "2026-03-24T20:19:45.401408",
+    "rounds": [
+      {
+        "round": 1,
+        "timestamp": "2026-03-24T20:19:45.404691",
+        "accuracy": 0.7598,
+        "detection_rate": 0.8665,
+        "f1": 0.8096,
+        "loss": 0.8666
+      },
+      {
+        "round": 2,
+        "timestamp": "2026-03-24T20:19:45.905250",
+        "accuracy": 0.8319,
+        "detection_rate": 0.9452,
+        "f1": 0.8849,
+        "loss": 0.5393
+      },
+      {
+        "round": 3,
+        "timestamp": "2026-03-24T20:19:46.406468",
+        "accuracy": 0.8847,
+        "detection_rate": 0.999,
+        "f1": 0.9384,
+        "loss": 0.2023
+      }
+    ],
+    "status": "completed",
+    "end_time": "2026-03-24T20:19:46.906709"
+  },
+  {
+    "config": {
+      "model": "mlp",
+      "strategy": "fedmedian",
+      "num_rounds": 3,
+      "num_clients": 2
+    },
+    "start_time": "2026-03-24T20:19:46.926598",
+    "rounds": [
+      {
+        "round": 1,
+        "timestamp": "2026-03-24T20:19:46.930250",
+        "accuracy": 0.7645,
+        "detection_rate": 0.8711,
+        "f1": 0.8143,
+        "loss": 0.8689
+      },
+      {
+        "round": 2,
+        "timestamp": "2026-03-24T20:19:47.430862",
+        "accuracy": 0.8308,
+        "detection_rate": 0.9441,
+        "f1": 0.8839,
+        "loss": 0.5387
+      },
+      {
+        "round": 3,
+        "timestamp": "2026-03-24T20:19:47.931300",
+        "accuracy": 0.8861,
+        "detection_rate": 0.999,
+        "f1": 0.9391,
+        "loss": 0.203
+      }
+    ],
+    "status": "completed",
+    "end_time": "2026-03-24T20:19:48.432029"
+  }
+]

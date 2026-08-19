@@ -1,0 +1,71 @@
+experiment:
+  name: distributed_5_laptop
+  seed: 42
+model_type: mlp
+input_dim: 78
+num_classes: 2
+training:
+  optimizer: adam
+  lr: 0.001
+  batch_size: 256
+  epochs: 3
+  weight_decay: 0.0
+federated:
+  num_rounds_global: 20
+  num_rounds_country: 5
+  strategy: fedavg
+  architecture: hierarchical
+network:
+  global_server:
+    ip: 192.168.1.100
+    port: 8080
+  countries:
+    country_A:
+      ip: 192.168.1.101
+      port: 8081
+      server_port: 9001
+      clients:
+      - Client_01
+      - Client_02
+      - Client_03
+      inject_port: 9091
+    country_B:
+      ip: 192.168.1.102
+      port: 8082
+      server_port: 9002
+      clients:
+      - Client_04
+      - Client_05
+      - Client_06
+      inject_port: 9092
+    country_C:
+      ip: 192.168.1.103
+      port: 8083
+      server_port: 9003
+      clients:
+      - Client_07
+      - Client_08
+      - Client_09
+      inject_port: 9093
+  attacker:
+    ip: 192.168.1.104
+    port: 9999
+hierarchy:
+  country_A:
+    clients:
+    - Client_01
+    - Client_02
+    - Client_03
+  country_B:
+    clients:
+    - Client_04
+    - Client_05
+    - Client_06
+  country_C:
+    clients:
+    - Client_07
+    - Client_08
+    - Client_09
+dashboard:
+  ip: 192.168.1.100
+  port: 8501

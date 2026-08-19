@@ -1,0 +1,50 @@
+# Base dataset mappings to a unified space
+
+unified_features:
+  - protocol
+  - flow_duration
+  - tot_fwd_pkts
+  - tot_bwd_pkts
+  - fwd_pkt_len_max
+  - bwd_pkt_len_max
+  - flow_bytes_s
+  - flow_pkts_s
+  - fwd_header_len
+  - bwd_header_len
+  - fwd_pkts_s
+  - bwd_pkts_s
+  - pkt_len_min
+  - pkt_len_max
+  - pkt_len_mean
+  - pkt_len_var
+  - psh_flag_cnt
+  - ack_flag_cnt
+  - down_up_ratio
+  - init_fwd_win_bytes
+
+# For generating dummy data, specify bounds
+dummy_data_bounds:
+  protocol: [0, 17] # Typically 6 (TCP) or 17 (UDP)
+  flow_duration: [100, 10000000]
+  tot_fwd_pkts: [1, 500]
+  tot_bwd_pkts: [0, 500]
+  fwd_pkt_len_max: [0, 1500]
+  bwd_pkt_len_max: [0, 1500]
+  flow_bytes_s: [0, 1000000]
+  flow_pkts_s: [0, 100000]
+  fwd_header_len: [20, 1000]
+  bwd_header_len: [0, 1000]
+  fwd_pkts_s: [0, 50000]
+  bwd_pkts_s: [0, 50000]
+  pkt_len_min: [0, 64]
+  pkt_len_max: [64, 1500]
+  pkt_len_mean: [0, 1000]
+  pkt_len_var: [0, 500000]
+  psh_flag_cnt: [0, 1]
+  ack_flag_cnt: [0, 1]
+  down_up_ratio: [0, 10]
+  init_fwd_win_bytes: [0, 65535]
+
+label_mapping:
+  benign: 0
+  attack: 1

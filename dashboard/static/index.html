@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL-NIDS Live Dashboard</title>
+    <meta name="description"
+        content="Federated Learning Network Intrusion Detection System — Real-Time Monitoring Dashboard">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <!-- ─── Status Bar ────────────────────────────────────── -->
+    <header id="status-bar">
+        <div class="status-left">
+            <span class="logo">🛡️ FL-NIDS</span>
+            <span class="tag" id="status-tag">IDLE</span>
+            <span class="meta-label">Round</span>
+            <span class="meta-value" id="current-round">0</span>
+            <span class="meta-sep">/</span>
+            <span class="meta-value" id="total-rounds">0</span>
+        </div>
+        <div class="status-center">
+            <span class="meta-label">Model</span>
+            <span class="meta-value accent" id="model-type">—</span>
+            <span class="meta-label">Strategy</span>
+            <span class="meta-value accent" id="strategy">—</span>
+            <span class="meta-label">Scenario</span>
+            <span class="meta-value accent" id="scenario-name">—</span>
+            <span class="defense-indicators" id="defense-indicators">
+                <span class="defense-badge off" id="def-dp" title="Differential Privacy">DP</span>
+                <span class="defense-badge off" id="def-gc" title="Gradient Clipping">GC</span>
+                <span class="defense-badge off" id="def-ce" title="Contribution Eval">CE</span>
+                <span class="defense-badge off" id="def-pd" title="Poison Detection">PD</span>
+            </span>
+        </div>
+        <div class="status-right">
+            <span class="meta-label">Elapsed</span>
+            <span class="meta-value" id="elapsed-time">00:00</span>
+            <span class="live-clock" id="live-clock">--:--:--</span>
+            <span class="ws-indicator" id="ws-indicator" title="WebSocket Status">⬤ Connecting</span>
+        </div>
+    </header>
+
+    <!-- ─── KPI Cards ─────────────────────────────────────── -->
+    <section id="kpi-row">
+        <div class="kpi-card">
+            <div class="kpi-label">Global Accuracy</div>
+            <div class="kpi-value" id="kpi-accuracy">0.00<span class="kpi-unit">%</span></div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-cyan" id="kpi-accuracy-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-accuracy"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Detection Rate</div>
+            <div class="kpi-value" id="kpi-detection">0.00<span class="kpi-unit">%</span></div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-green" id="kpi-detection-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-detection"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">F1-Score</div>
+            <div class="kpi-value" id="kpi-f1">0.000</div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-purple" id="kpi-f1-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-f1"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Precision</div>
+            <div class="kpi-value" id="kpi-precision">0.000</div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-teal" id="kpi-precision-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-precision"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">False Positive Rate</div>
+            <div class="kpi-value warning" id="kpi-fpr">0.00<span class="kpi-unit">%</span></div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-red" id="kpi-fpr-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-fpr"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Fairness (Jain's)</div>
+            <div class="kpi-value" id="kpi-fairness">0.000</div>
+            <div class="kpi-bar">
+                <div class="kpi-fill fill-amber" id="kpi-fairness-bar" style="width:0%"></div>
+            </div>
+            <div class="kpi-sparkline" id="spark-fairness"></div>
+        </div>
+    </section>
+
+    <!-- ─── Main Grid ─────────────────────────────────────── -->
+    <main id="main-grid">
+        <!-- Row 1: Convergence | Hierarchy | Heatmap -->
+        <div class="panel" id="panel-convergence">
+            <div class="panel-header">
+                <h2>📈 Convergence</h2>
+                <span class="panel-subtitle">Accuracy &amp; Loss vs Round</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="convergence-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-hierarchy">
+            <div class="panel-header">
+                <h2>🗺️ Hierarchy Map</h2>
+                <span class="panel-subtitle">Global → Countries → Clients</span>
+            </div>
+            <div id="hierarchy-tree">
+                <div class="tree-level tree-global">
+                    <div class="tree-node node-global" id="node-global">
+                        <span class="node-icon">🌐</span>
+                        <span class="node-label">Global Server</span>
+                        <span class="node-metric" id="node-global-acc">—</span>
+                    </div>
+                </div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-level tree-countries" id="countries-row">
+                    <!-- Dynamically populated -->
+                </div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-level tree-clients" id="clients-row">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-heatmap">
+            <div class="panel-header">
+                <h2>🎯 Client Detection Heatmap</h2>
+                <span class="panel-subtitle">Detection Rate per Client</span>
+            </div>
+            <div id="heatmap-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Row 2: Communication | Anomaly Timeline | Weight Divergence -->
+        <div class="panel" id="panel-comms">
+            <div class="panel-header">
+                <h2>📡 Communication</h2>
+                <span class="panel-subtitle">Upload / Download per Round</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="comm-chart"></canvas>
+            </div>
+            <div class="comm-totals">
+                <span>Total ↑ <strong id="comm-upload">0.00</strong> MB</span>
+                <span>Total ↓ <strong id="comm-download">0.00</strong> MB</span>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-anomaly">
+            <div class="panel-header">
+                <h2>⚡ Anomaly Timeline</h2>
+                <span class="panel-subtitle">Score Distribution per Round</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="anomaly-chart"></canvas>
+            </div>
+            <div class="anomaly-stats">
+                <span>Avg Score: <strong id="anomaly-avg">0.00</strong></span>
+                <span>Above 0.8: <strong id="anomaly-high">0</strong></span>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-divergence">
+            <div class="panel-header">
+                <h2>📐 Weight Divergence</h2>
+                <span class="panel-subtitle">Client vs Global Model</span>
+            </div>
+            <div class="chart-container chart-square">
+                <canvas id="divergence-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Row 3: Incidents | Controls | Training Timeline -->
+        <div class="panel" id="panel-incidents">
+            <div class="panel-header">
+                <h2>🚨 Incident Feed</h2>
+                <div class="incident-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="attack">Attack</button>
+                    <button class="filter-btn" data-filter="drift">Drift</button>
+                    <button class="filter-btn" data-filter="poison">Poison</button>
+                </div>
+                <span class="panel-subtitle" id="incident-count">0 events</span>
+            </div>
+            <div id="incident-feed">
+                <div class="incident-empty">Waiting for incidents…</div>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-controls">
+            <div class="panel-header">
+                <h2>🎛️ Experiment Controls</h2>
+                <span class="panel-subtitle">Configure &amp; Run</span>
+            </div>
+            <div class="controls-body">
+                <div class="control-group">
+                    <label for="ctrl-model" title="The neural network architecture to use across all clients">Model</label>
+                    <select id="ctrl-model">
+                        <option value="mlp" title="Multi-Layer Perceptron: Simple and fast, good baseline">MLP</option>
+                        <option value="cnn" title="1D Convolutional Neural Net: Good for capturing temporal sequence patterns">1D-CNN</option>
+                        <option value="lstm" title="Long Short-Term Memory: Excellent for sequential and time-series data">BiLSTM</option>
+                        <option value="resnet" title="Residual Network: Deep architecture robust against vanishing gradients">ResNet</option>
+                        <option value="autoencoder" title="Autoencoder: Unsupervised anomaly detection">Autoencoder</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="ctrl-strategy" title="How client models are combined at the global server">Strategy</label>
+                    <select id="ctrl-strategy">
+                        <option value="fedavg" title="FedAvg: Standard weighted averaging">FedAvg</option>
+                        <option value="fedprox" title="FedProx: Adds a proximal term to handle statistical heterogeneity">FedProx</option>
+                        <option value="fedmedian" title="FedMedian: Robust aggregation using the coordinate-wise median">FedMedian</option>
+                        <option value="trimmed_mean" title="Trimmed Mean: Robust against extreme weight updates (poisoning)">Trimmed Mean</option>
+                        <option value="krum" title="Krum: Selects a single client model closest to the majority (Byzantine robust)">Krum</option>
+                        <option value="fednova" title="FedNova: Normalizes updates to handle varying local steps">FedNova</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="ctrl-scenario" title="Attacker objective and intensity">Scenario</label>
+                    <select id="ctrl-scenario">
+                        <option value="none" title="Baseline: Only benign background traffic">No Attack</option>
+                        <option value="gentle_probe" title="Low-intensity port scanning (~5% anomalous)">Gentle Probe</option>
+                        <option value="targeted_strike" title="High-intensity focused attack on a single client">Targeted Strike</option>
+                        <option value="full_siege" title="Massive multi-vector attack across whole country">Full Siege</option>
+                        <option value="apt_campaign" title="Advanced Persistent Threat: Slow, stealthy data exfiltration">APT Campaign</option>
+                        <option value="insider_threat" title="Authorized user generating localized anomalies">Insider Threat</option>
+                        <option value="zero_day" title="Unknown attack pattern testing generalization">Zero Day</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="ctrl-rounds" title="Total global synchronization rounds">Rounds</label>
+                    <input type="number" id="ctrl-rounds" min="1" max="500" value="80" title="Higher implies better convergence but longer training time">
+                </div>
+                <div class="control-actions" style="flex-direction: column; align-items: stretch; gap: 8px;">
+                    <button class="btn btn-start" id="btn-save-config" title="Save these settings to physical_config.yaml">💾 Save Configuration</button>
+                    <button class="btn btn-danger" id="btn-shutdown" title="Shutdown the entire system">⏹️ Shutdown System</button>
+                    <button class="btn btn-warning" id="btn-reload" title="Reload configuration without stopping">🔄 Reload Config</button>
+                    <div style="font-size: 0.75rem; color: #8892a8; text-align: center;">Changes apply on next Demo run</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-timeline">
+            <div class="panel-header">
+                <h2>⏱️ Training Timeline</h2>
+                <span class="panel-subtitle">Event Gantt Chart</span>
+            </div>
+            <div class="chart-container chart-wide">
+                <canvas id="timeline-chart"></canvas>
+            </div>
+            <div class="timeline-legend">
+                <span class="legend-item"><i style="background:#00e5ff"></i>Training</span>
+                <span class="legend-item"><i style="background:#76ff03"></i>Aggregation</span>
+                <span class="legend-item"><i style="background:#ff6e40"></i>Evaluation</span>
+                <span class="legend-item"><i style="background:#ab47bc"></i>Communication</span>
+                <span class="legend-item"><i style="background:#ffd740"></i>Defense</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

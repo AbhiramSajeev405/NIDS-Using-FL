@@ -1,0 +1,22 @@
+experiment:
+  name: mlp_fedprox_quick
+  seed: 42
+federated:
+  architecture: flat
+  num_clients: 2
+  num_rounds_global: 5
+  proximal_mu: 0.1
+  proximal_mu_adaptive: true
+  strategy: fedprox
+input_dim: 78
+model_type: mlp
+network:
+  global_server:
+    ip: 127.0.0.1
+    port: 30001
+num_classes: 2
+training:
+  batch_size: 256
+  epochs: 1
+  lr: 0.001
+  optimizer: adam

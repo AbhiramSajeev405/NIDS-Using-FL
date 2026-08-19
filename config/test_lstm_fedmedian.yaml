@@ -1,0 +1,58 @@
+
+experiment:
+  name: "test_lstm_fedmedian"
+  seed: 42
+
+model_type: "lstm"
+input_dim: 78
+num_classes: 2
+
+training:
+  optimizer: "adam"
+  lr: 0.001
+  lr_scheduler: "none"
+  batch_size: 256
+  epochs: 1
+  weight_decay: 0.0
+  momentum: 0.9
+
+federated:
+  architecture: "flat"
+  num_rounds_global: 3
+  strategy: "fedmedian"
+  proximal_mu: 0.1
+  trim_ratio: 0.1
+  krum_num_malicious: 1
+  krum_multi_k: 1
+
+data:
+  distribution: "iid"
+  dirichlet_alpha: 0.5
+
+network:
+  global_server:
+    ip: "127.0.0.1"
+    port: 8080
+  countries:
+    country_A:
+      ip: "127.0.0.1"
+      port: 8081
+      clients:
+        - "Client_01"
+        - "Client_02"
+    country_B:
+      ip: "127.0.0.1"
+      port: 8082
+      clients:
+        - "Client_03"
+        - "Client_04"
+    country_C:
+      ip: "127.0.0.1"
+      port: 8083
+      clients:
+        - "Client_05"
+  attacker:
+    ip: "127.0.0.1"
+
+dashboard:
+  port: 456

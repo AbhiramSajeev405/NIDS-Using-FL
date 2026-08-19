@@ -1,0 +1,41 @@
+================================================================================
+FULL GRID TEST RESULTS - 20 Rounds
+================================================================================
+Completed: 2026-05-05 00:56:11
+Total Time: 12.5 minutes
+
+Passed: 30/30
+Failed: 0/30
+
+Model        Strategy            Acc      FPR   Duration
+------------------------------------------------------------
+mlp          fedavg           0.9387   0.0000       16.5s
+mlp          fedprox          0.9386   0.0000       24.2s
+mlp          fedmedian        0.9378   0.0000       17.8s
+mlp          krum             0.9387   0.0000       18.2s
+mlp          trimmed_mean     0.9386   0.0000       18.3s
+mlp          fednova          0.9385   0.0000       20.3s
+cnn          fedavg           0.9384   0.0000       23.7s
+cnn          fedprox          0.9381   0.0000       28.8s
+cnn          fedmedian        0.9382   0.0000       20.9s
+cnn          krum             0.9374   0.0000       21.4s
+cnn          trimmed_mean     0.9385   0.0000       21.4s
+cnn          fednova          0.9384   0.0000       21.1s
+lstm         fedavg           0.9357   0.0000       26.5s
+lstm         fedprox          0.9358   0.0000       42.2s
+lstm         fedmedian        0.9366   0.0000       26.3s
+lstm         krum             0.9367   0.0000       26.3s
+lstm         trimmed_mean     0.9358   0.0000       26.3s
+lstm         fednova          0.9367   0.0000       26.4s
+resnet       fedavg           0.9378   0.0000       27.6s
+resnet       fedprox          0.9378   0.0000       51.2s
+resnet       fedmedian        0.9388   0.0000       27.9s
+resnet       krum             0.9374   0.0000       27.3s
+resnet       trimmed_mean     0.7731   0.2927       27.4s
+resnet       fednova          0.9385   0.0001       27.6s
+autoencoder  fedavg           0.9378   0.0000       18.7s
+autoencoder  fedprox          0.9374   0.0000       32.2s
+autoencoder  fedmedian        0.9388   0.0000       19.0s
+autoencoder  krum             0.9378   0.0000       19.9s
+autoencoder  trimmed_mean     0.9384   0.0000       19.4s
+autoencoder  fednova          0.9373   0.0000       18.7s

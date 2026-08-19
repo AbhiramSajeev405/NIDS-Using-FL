@@ -1,0 +1,45 @@
+================================================================================
+FULL GRID TEST RESULTS
+Completed: 2026-05-03 21:32:32  (total: 241.8 min)
+================================================================================
+
+Model        Strategy       Status       Dur        Acc    DetRate         F1        FPR
+----------------------------------------------------------------------------------
+mlp          fedavg         TIMEOUT       --         --         --         --         --
+mlp          fedprox        TIMEOUT       --         --         --         --         --
+mlp          fedmedian      TIMEOUT       --         --         --         --         --
+mlp          krum           TIMEOUT       --         --         --         --         --
+mlp          trimmed_mean   TIMEOUT       --         --         --         --         --
+mlp          fednova        TIMEOUT       --         --         --         --         --
+cnn          fedavg         TIMEOUT       --         --         --         --         --
+cnn          fedprox        TIMEOUT       --         --         --         --         --
+cnn          fedmedian      TIMEOUT       --         --         --         --         --
+cnn          krum           TIMEOUT       --         --         --         --         --
+cnn          trimmed_mean   TIMEOUT       --         --         --         --         --
+cnn          fednova        TIMEOUT       --         --         --         --         --
+lstm         fedavg         TIMEOUT       --         --         --         --         --
+lstm         fedprox        TIMEOUT       --         --         --         --         --
+lstm         fedmedian      TIMEOUT       --         --         --         --         --
+lstm         krum           TIMEOUT       --         --         --         --         --
+lstm         trimmed_mean   TIMEOUT       --         --         --         --         --
+lstm         fednova        TIMEOUT       --         --         --         --         --
+resnet       fedavg         TIMEOUT       --         --         --         --         --
+resnet       fedprox        TIMEOUT       --         --         --         --         --
+resnet       fedmedian      TIMEOUT       --         --         --         --         --
+resnet       krum           TIMEOUT       --         --         --         --         --
+resnet       trimmed_mean   TIMEOUT       --         --         --         --         --
+resnet       fednova        TIMEOUT       --         --         --         --         --
+autoencoder  fedavg         TIMEOUT       --         --         --         --         --
+autoencoder  fedprox        TIMEOUT       --         --         --         --         --
+autoencoder  fedmedian      TIMEOUT       --         --         --         --         --
+autoencoder  krum           TIMEOUT       --         --         --         --         --
+autoencoder  trimmed_mean   TIMEOUT       --         --         --         --         --
+autoencoder  fednova        TIMEOUT       --         --         --         --         --
+----------------------------------------------------------------------------------
+Passed: 0/30
+
+BEST ACCURACY PER MODEL:
+
+BEST OVERALL:
+
+================================================================================

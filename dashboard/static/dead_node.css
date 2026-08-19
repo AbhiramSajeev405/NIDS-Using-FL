@@ -1,0 +1,40 @@
+/* Dead Client Styling - Add to dashboard */
+
+/* Dead node visual */
+.tree-node.dead-node {
+    opacity: 0.4;
+    color: #666;
+    border-color: #ff4444;
+}
+
+.tree-node.dead-node .node-icon {
+    filter: grayscale(100%);
+}
+
+.tree-node.dead-node .node-metric {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+/* Dead badge */
+.badge-dead {
+    background-color: #ff4444;
+    color: white;
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+/* Update heatmap for dead clients */
+.heatmap-cell.dead {
+    background: repeating-linear-gradient(
+        45deg,
+        #2d3748,
+        #2d3748 10px,
+        #4a5568 10px,
+        #4a5568 20px
+    );
+    color: #ff4444;
+}

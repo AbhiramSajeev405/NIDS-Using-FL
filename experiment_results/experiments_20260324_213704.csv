@@ -1,0 +1,2 @@
+model,strategy,num_rounds,num_clients,final_accuracy,final_detection_rate,final_f1,final_loss,rounds_completed,duration_seconds
+mlp,fedavg,3,2,0.89,0.999,0.9414,0.2096,3,1.504718

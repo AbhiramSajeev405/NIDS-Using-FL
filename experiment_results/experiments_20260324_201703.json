@@ -1,0 +1,39 @@
+[
+  {
+    "config": {
+      "model": "mlp",
+      "strategy": "fedavg",
+      "num_rounds": 3,
+      "num_clients": 2
+    },
+    "start_time": "2026-03-24T20:17:03.683697",
+    "rounds": [
+      {
+        "round": 1,
+        "timestamp": "2026-03-24T20:17:03.686784",
+        "accuracy": 0.7778,
+        "detection_rate": 0.8845,
+        "f1": 0.8277,
+        "loss": 0.8756
+      },
+      {
+        "round": 2,
+        "timestamp": "2026-03-24T20:17:04.187029",
+        "accuracy": 0.8135,
+        "detection_rate": 0.9269,
+        "f1": 0.8665,
+        "loss": 0.5301
+      },
+      {
+        "round": 3,
+        "timestamp": "2026-03-24T20:17:04.687357",
+        "accuracy": 0.8855,
+        "detection_rate": 0.999,
+        "f1": 0.9388,
+        "loss": 0.2027
+      }
+    ],
+    "status": "completed",
+    "end_time": "2026-03-24T20:17:05.188140"
+  }
+]

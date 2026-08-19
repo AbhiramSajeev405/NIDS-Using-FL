@@ -1,0 +1,78 @@
+
+experiment:
+  name: "v2_fixed_fedprox"
+  seed: 42
+
+model_type: "mlp"
+input_dim: 78
+num_classes: 2
+
+training:
+  optimizer: "adam"
+  lr: 0.001
+  lr_scheduler: "cosine"
+  batch_size: 128
+  epochs: 10
+  weight_decay: 0.0001
+
+federated:
+  architecture: "flat"
+  num_rounds_global: 15
+  strategy: "fedprox"
+  proximal_mu: 0.1
+  trim_ratio: 0.1
+  krum_num_malicious: 1
+  krum_multi_k: 1
+
+personalization:
+  enabled: false
+
+data:
+  distribution: "iid"
+  dirichlet_alpha: 1.0
+  quantity_skew: false
+
+defense:
+  differential_privacy: false
+  gradient_clipping: false
+
+anomaly:
+  enabled: false
+
+drift:
+  enabled: false
+
+poison_detection:
+  enabled: false
+
+network:
+  global_server:
+    ip: "127.0.0.1"
+    port: 8080
+  countries:
+    country_A:
+      ip: "127.0.0.1"
+      port: 8081
+      clients:
+        - "Client_01"
+        - "Client_02"
+        - "Client_03"
+    country_B:
+      ip: "127.0.0.1"
+      port: 8082
+      clients:
+        - "Client_04"
+        - "Client_05"
+        - "Client_06"
+    country_C:
+      ip: "127.0.0.1"
+      port: 8083
+      clients:
+        - "Client_07"
+        - "Client_08"
+        - "Client_09"
+
+dashboard:
+  port: 456
+  bind: "0.0.0.0"
+  refresh_interval_ms: 1000

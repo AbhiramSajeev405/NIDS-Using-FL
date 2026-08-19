@@ -31,3 +31,6 @@ logs/
 # OS files
 Thumbs.db
 .DS_Store
+
+# AI/editor tooling
+.claude/

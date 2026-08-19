@@ -1,6 +1,8 @@
 # Python cache
 __pycache__/
-*.py[cod]
+**/__pycache__/
+*.pyc
+*.pyo
 
 # Virtual environments
 venv/
@@ -11,7 +13,7 @@ env/
 deployment_tools/python_embedded/
 deployment_tools/python-*-embed-amd64.zip
 
-# Dataset
+# Large datasets
 data/
 
 # Logs
@@ -22,12 +24,10 @@ logs/
 .env
 *.env
 
-# IDE
+# IDE files
 .vscode/
 .idea/
 
-# Windows
+# OS files
 Thumbs.db
-
-# macOS
 .DS_Store

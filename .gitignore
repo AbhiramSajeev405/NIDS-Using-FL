@@ -1,18 +1,33 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
 # Embedded Python runtime
 deployment_tools/python_embedded/
 deployment_tools/python-*-embed-amd64.zip
 
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
+# Dataset
+data/
 
 # Logs
 logs/
 *.log
 
-# Local dataset
-data/
+# Environment variables / secrets
+.env
+*.env
 
-# Dataset files
-data/
+# IDE
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store

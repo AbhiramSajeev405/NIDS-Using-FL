@@ -1,9 +1,8 @@
 # Federated Learning-Based Network Intrusion Detection System
 
-A privacy-preserving **Network Intrusion Detection System (NIDS)** that uses **Federated Learning (FL)** to collaboratively train intrusion detection models across distributed network clients without sharing their raw network traffic data.
+A privacy-preserving **Network Intrusion Detection System (NIDS)** developed by our team using **Federated Learning (FL)** to collaboratively train intrusion detection models across distributed network clients without sharing their raw network traffic data.
 
-The project explores heterogeneous cybersecurity datasets, multiple deep-learning architectures, federated aggregation strategies, attack simulation, defensive mechanisms, and real-time training monitoring.
-
+As an academic team project, we explored heterogeneous cybersecurity datasets, multiple deep-learning architectures, federated aggregation strategies, attack simulation, defensive mechanisms, and real-time training monitoring.
 ---
 
 ## 📌 Overview
@@ -521,25 +520,25 @@ Planned areas for further development include:
 - Improved experiment visualization and reporting
 
 ---
-
-
-
----
-
 # 📚 Project Context
 
-This project was developed as an academic exploration of **Federated Learning for Network Intrusion Detection**, focusing on privacy-preserving collaborative training across heterogeneous network environments.
+This project was developed by our team as an academic exploration of **Federated Learning for Network Intrusion Detection**, focusing on privacy-preserving collaborative training across heterogeneous network environments.
 
-The objective is to investigate how distributed organizations or network environments could collaboratively improve intrusion detection models without directly exchanging their raw network traffic datasets.
+Our objective was to investigate how distributed organizations or network environments could collaboratively improve intrusion detection models without directly exchanging their raw network traffic datasets.
 
 ---
+## 👥 Project Team
 
-## Author
+This project was designed and developed collaboratively by our four-member academic project team. We worked together on the development, experimentation, testing, and documentation of the Federated Learning-based Network Intrusion Detection System.
 
-**Abhiram Sajeev**
+| Team Member | GitHub |
+|-------------|--------|
+| **Abhiram Sajeev** | [@AbhiramSajeev405](https://github.com/AbhiramSajeev405) |
+| **Adarsh S J** | [@Horcrux123](https://github.com/Horcrux123) |
+| **Alfin Jerome** | [@alfinjerome](https://github.com/alfinjerome) |
+| **Alen J S** | [@thereelalen](https://github.com/thereelalen) |
 
-GitHub: [AbhiramSajeev405](https://github.com/AbhiramSajeev405)
-
+> This repository represents the collaborative work of all four team members.
 ---
 
 > **Note:** This repository is intended for academic, research, and portfolio purposes.

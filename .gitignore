@@ -1,0 +1,15 @@
+# Embedded Python runtime
+deployment_tools/python_embedded/
+deployment_tools/python-*-embed-amd64.zip
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+logs/
+*.log
+
+# Local dataset
+data/

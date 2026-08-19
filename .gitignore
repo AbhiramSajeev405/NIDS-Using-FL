@@ -56,6 +56,8 @@ logs/
 # IDE
 .vscode/
 .idea/
+Thumbs.db
+.DS_Store
 
 # OS
 Thumbs.db
@@ -82,10 +84,16 @@ dashboard/live_state.json
 # Development/session notes
 docs/SESSION_SUMMARY*.md
 
-# Temporary/debug result files
+# Temporary/debug results
 results/code_verification.json
 results/direct_fix_test.json
 results/quick_batch_*.json
 results/quick_test_results.txt
+models/test_results_*.json
 
 models/test_results_*.json
+
+# Large embedded Python runtime
+deployment_tools/python_embedded/
+deployment_tools/python-*-embed-amd64.zip
+
